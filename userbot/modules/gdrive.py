@@ -54,11 +54,11 @@ async def gdrive_upload_function(dryb):
         url = url.strip()
         # https://stackoverflow.com/a/761825/4723940
         file_name = file_name.strip()
-        header, tail = os.path.split(file_name)
-        if header:
-            if not os.path.isdir(os.path.join(TEMP_DOWNLOAD_DIRECTORY, header)):
-                os.makedirs(os.path.join(TEMP_DOWNLOAD_DIRECTORY, header))
-                file_name = os.path.join(header, tail)
+        head, tail = os.path.split(file_name)
+        if head:
+            if not os.path.isdir(os.path.join(TEMP_DOWNLOAD_DIRECTORY, head)):
+                os.makedirs(os.path.join(TEMP_DOWNLOAD_DIRECTORY, head))
+                file_name = os.path.join(head, tail)
         downloaded_file_name = TEMP_DOWNLOAD_DIRECTORY + "" + file_name
         downloader = SmartDL(url, downloaded_file_name, progress_bar=False)
         downloader.start(blocking=False)
